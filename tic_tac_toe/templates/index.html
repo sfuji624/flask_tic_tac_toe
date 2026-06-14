@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>まるばつゲーム</title>
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<h1>まるばつゲーム</h1>
+
+<p>現在の手番：{{ turn }}</p>
+
+<table>
+{% for row in board %}
+<tr>
+    {% set row_index = loop.index0 %}
+    {% for cell in row %}
+    <td>
+        {% if cell == "" %}
+        <form action="/move" method="post">
+            <input type="hidden" name="row" value="{{ row_index }}">
+            <input type="hidden" name="col" value="{{ loop.index0 }}">
+            <button type="submit"></button>
+        </form>
+        {% else %}
+            {{ cell }}
+        {% endif %}
+    </td>
+    {% endfor %}
+</tr>
+{% endfor %}
+</table>
+
+<form action="/reset" method="post">
+    <button type="submit">リセット</button>
+</form>
+
+{% if winner %}
+<h2>{{ winner }} の勝ち！</h2>
+{% endif %}
+
+</body>
+</html>

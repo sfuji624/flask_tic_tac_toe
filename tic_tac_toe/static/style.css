@@ -1,0 +1,19 @@
+table {
+    border-collapse: collapse;
+}
+
+td {
+    width: 80px;
+    height: 80px;
+    border: 2px solid black;
+    text-align: center;
+    font-size: 40px;
+}
+
+td button {
+    width: 80px;
+    height: 80px;
+    border: none;
+    background: white;
+    cursor: pointer;
+}
